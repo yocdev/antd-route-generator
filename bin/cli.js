@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const t = require("@babel/types");
 const parser = require("@babel/parser");
 const path = require("path");
