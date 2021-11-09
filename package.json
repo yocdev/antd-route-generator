@@ -1,6 +1,6 @@
 {
   "name": "@yocdev/antd-route-generator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "在使用 ant-design 库的项目里自动生成 route 和 menu 代码的命令行工具(只支持 js)",
   "bin": {
     "route-gen": "bin/cli.js"
@@ -14,6 +14,7 @@
   },
   "peerDependencies": {
     "@babel/core": "^7.15.8",
+    "@babel/generator": "^7.16.0",
     "@babel/parser": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@babel/traverse": "^7.15.4",
