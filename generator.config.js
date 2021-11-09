@@ -1,0 +1,3 @@
+module.exports = {
+  routePath: "./example",
+};

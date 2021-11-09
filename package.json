@@ -1,0 +1,45 @@
+{
+  "name": "antd-route-generator",
+  "version": "1.0.0",
+  "description": "在使用 ant-design 库的项目里自动生成 route 和 menu 代码的命令行工具",
+  "bin": {
+    "route-gen": "bin/cli.js"
+  },
+  "scripts": {
+    "dev": "node bin/cli.js",
+    "jest": "jest"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/parser": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/traverse": "^7.15.4",
+    "@babel/types": "^7.15.6",
+    "rd": "^2.0.1"
+  },
+  "dependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/generator": "^7.16.0",
+    "@babel/parser": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/traverse": "^7.15.4",
+    "@babel/types": "^7.15.6",
+    "jtd": "^0.1.1",
+    "prettier": "^2.4.1",
+    "rd": "^2.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yocdev/antd-route-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yocdev/antd-route-generator/issues"
+  },
+  "homepage": "https://github.com/yocdev/antd-route-generator#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
