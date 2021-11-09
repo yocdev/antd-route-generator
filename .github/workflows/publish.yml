@@ -16,8 +16,8 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
-      - uses: borales/actions-yarn@v2.3.0
-      - run: yarn publish --access public
+          scope: "@yocdev"
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
@@ -29,7 +29,6 @@ jobs:
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
-      - uses: borales/actions-yarn@v2.3.0
-      - run: yarn publish --access public
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
