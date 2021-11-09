@@ -4,6 +4,7 @@ const parser = require("@babel/parser");
 const path = require("path");
 const fs = require("fs");
 const rd = require("rd");
+const prettier = require("prettier");
 const traverse = require("@babel/traverse").default;
 const generate = require("@babel/generator").default;
 const getConfig = require("./helper/get-config");
@@ -70,7 +71,7 @@ traverse(ast, {
       path.node.body.unshift(
         t.importDeclaration(
           [t.importDefaultSpecifier(t.identifier(`${firstUpperCase(name)}`))],
-          t.stringLiteral(`./${name}`)
+          t.stringLiteral(`./collection/${name}`)
         )
       );
     });
@@ -98,11 +99,9 @@ traverse(ast, {
         // console.log(path.parent);
         routes.forEach((name) => {
           path.parent.init.elements.push(
-            t.spreadElement(
-              t.memberExpression(
-                t.Identifier(`${firstUpperCase(name)}`),
-                t.Identifier("menus")
-              )
+            t.memberExpression(
+              t.Identifier(`${firstUpperCase(name)}`),
+              t.Identifier("menus")
             )
           );
         });
@@ -113,10 +112,16 @@ traverse(ast, {
 
 const result = generate(ast);
 
+const formateCode = prettier.format(result.code, {
+  printWidth: 80,
+  tabWidth: 2,
+  trailingComma: "all",
+  parser: "babel",
+});
 // console.log(result.code);
 
 // NOTE: 写入到文件
-fs.writeFileSync(path.resolve(routePath, "./index.js"), result.code, "utf8");
+fs.writeFileSync(path.resolve(routePath, "./index.js"), formateCode, "utf8");
 
 function firstUpperCase(str) {
   return str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
