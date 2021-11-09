@@ -42,19 +42,15 @@ let routes = files.map((filePath) => {
   return path.basename(filePath).replace(path.extname(filePath), "");
 });
 
-// TODO: 根据 config 里的重新排序
-
+// NOTE: 根据 orders.json （外部可以调整菜单顺序）重新排序
 const ordersPath = path.resolve(routePath, "./orders.json");
 if (fs.existsSync(ordersPath)) {
   const orders = require(ordersPath);
-  console.log("更新前菜单顺序", JSON.stringify(orders));
   const currentOrders = orders.filter((it) => routes.includes(it));
   const addRoutes = routes.filter((it) => !currentOrders.includes(it));
   routes = [...currentOrders, ...addRoutes];
-  oldOrdersCode = JSON.stringify(orders);
 }
 const ordersCode = `${JSON.stringify(routes)}`;
-console.log("当前菜单顺序", ordersCode);
 
 fs.writeFileSync(path.resolve(routePath, "./orders.json"), ordersCode, "utf8");
 
@@ -116,7 +112,7 @@ traverse(ast, {
 
 const result = generate(ast);
 
-console.log(result.code);
+// console.log(result.code);
 
 // NOTE: 写入到文件
 fs.writeFileSync(path.resolve(routePath, "./index.js"), result.code, "utf8");
