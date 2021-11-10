@@ -3,7 +3,7 @@
   "version": "1.0.9",
   "description": "在使用 ant-design 库的项目里自动生成 route 和 menu 代码的命令行工具(只支持 js)",
   "bin": {
-    "route-gen": "bin/cli.js"
+    "genRoute": "bin/cli.js"
   },
   "files": [
     "bin"
