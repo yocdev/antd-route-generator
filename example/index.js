@@ -1,11 +1,19 @@
-import Settings from "./collection/settings";
-import Order from "./collection/order";
-import User from "./collection/user";
-import Business from "./collection/business";
+import settings from "./collection/settings";
+import order from "./collection/order";
+import user from "./collection/user";
+import business from "./collection/business";
+import orderList from "./collection/orderList";
 export const routes = [
-  ...Settings.routes,
-  ...Order.routes,
-  ...User.routes,
-  ...Business.routes,
+  ...settings.routes,
+  ...order.routes,
+  ...user.routes,
+  ...business.routes,
+  ...orderList.routes,
 ];
-export const menus = [Settings.menus, Order.menus, User.menus, Business.menus];
+export const menus = [
+  settings.menus,
+  order.menus,
+  user.menus,
+  business.menus,
+  orderList.menus,
+];

@@ -70,7 +70,7 @@ traverse(ast, {
     const imports = reversedRoutes.forEach((name) => {
       path.node.body.unshift(
         t.importDeclaration(
-          [t.importDefaultSpecifier(t.identifier(`${firstUpperCase(name)}`))],
+          [t.importDefaultSpecifier(t.identifier(name))],
           t.stringLiteral(`./collection/${name}`)
         )
       );
@@ -85,7 +85,7 @@ traverse(ast, {
           path.parent.init.elements.push(
             t.spreadElement(
               t.memberExpression(
-                t.Identifier(`${firstUpperCase(name)}`),
+                t.Identifier(`${name}`),
                 t.Identifier("routes")
               )
             )
@@ -99,10 +99,7 @@ traverse(ast, {
         // console.log(path.parent);
         routes.forEach((name) => {
           path.parent.init.elements.push(
-            t.memberExpression(
-              t.Identifier(`${firstUpperCase(name)}`),
-              t.Identifier("menus")
-            )
+            t.memberExpression(t.Identifier(`${name}`), t.Identifier("menus"))
           );
         });
       }
