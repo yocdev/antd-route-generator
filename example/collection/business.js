@@ -22,4 +22,4 @@ const menus = {
   ],
 };
 
-export { routes, menus };
+export default { routes, menus };

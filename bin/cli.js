@@ -118,7 +118,12 @@ const formateCode = prettier.format(result.code, {
 // console.log(result.code);
 
 // NOTE: 写入到文件
-fs.writeFileSync(path.resolve(routePath, "./index.js"), formateCode, "utf8");
+const fileType = config.fileType || "js";
+fs.writeFileSync(
+  path.resolve(routePath, `./index.${fileType}`),
+  formateCode,
+  "utf8"
+);
 
 function firstUpperCase(str) {
   return str.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase());
